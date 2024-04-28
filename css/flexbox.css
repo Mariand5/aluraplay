@@ -1,0 +1,166 @@
+/*Cabecera*/
+.cabecera__container{
+    display: flex; /*Para aplicar flexbox para alinear los elementos se debe configurar display:flex en el elemento padre*/
+    justify-content: space-between; /*Justifica el contenido y coloca el mismo espacio entre todos los elementos aprovechando todo el ancho disponible*/
+    align-items: center; /*Alineación vertical centrada*/
+    position: fixed; /*Posición fija al scrollear*/
+    top: 0%; /*Se fija en la parte de arriba*/
+}
+
+.cabecera__buscar__item{
+    display: none;
+}
+
+.menu__container{
+    position: fixed;
+    bottom: 0%; /*Lo fijamos en la parte de abajo*/
+    height: 75px;
+    width: 100%; /*Ocupa todo el ancho del body*/
+}
+
+.menu__lista{
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    /*align-items: center; Podemos centrar los elementos verticalmente de esta manera*/
+}
+
+.menu__items{
+    display: flex;
+    flex-direction: column;/*Ubicamos el nombre debajo del icono*/
+    gap: 5px;/*separación entre el nombre y el icono*/
+}
+
+.menu__lista li{
+    align-self: center; /*Probamos otra manera de alinear los elementos de la lista, nos permite modificar el alineamiento de forma individual o colectiva*/
+}
+
+/*Sirve para seleccionar y aplicar propiedades solo a determinados "hijos" de una clase*/
+.menu__lista:nth-child(2),
+.menu__lista:nth-child(3),
+.menu__lista:nth-child(4){
+    display: none;
+}
+
+/*Sección superior*/
+.superior__seccion__container{
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /*Que no se quiebre el texto dentro de los elementos*/
+    overflow: scroll; /*Agrega una barra de desplazamiento*/
+    gap: 15px; /*Agrega un espacio determinado entre los elementos, solo para usar con flexbox*/
+}
+
+/*Sección videos*/
+.videos__item{
+    height: 303px;
+    width: 280px;
+    flex-grow: 1; /*Hace que los elementos crezcan proporcionalmente hasta el tamaño que les permita el contenedor*/
+}
+
+.videos__container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; 
+}
+
+.descripcion-video{
+    display: flex;
+    margin-top: 1rem;
+    align-items: start;
+}
+
+.descripcion-video img{
+    margin-right: 1rem;
+    flex-shrink: 0;/*Para que la imagen no se reduzca*/
+}
+
+.detalles__video{
+    flex-direction: column;
+    text-align: left;
+}
+
+.detalles__video h3{
+    margin-bottom: 10px;
+}
+
+/*Footer*/
+.rodapie__container{
+    display: flex;
+    flex-flow: column wrap; /*column indica que los elementos se ubican en columnas, cambia la el eje principal de los elementos, wrap hace que los elementos se quiebren en varias partes que se ajustan al contenedor*/
+}
+
+@media(min-width:834px){
+    /*Cabecera*/
+    .cabecera__buscar__item{
+        display: block;
+    }
+
+    /*Menu*/
+    .menu__container{
+        left: 0;
+        width: 74px;
+        top: 80px; /*Se fija arriba a 80px del borde*/
+        height: auto;
+    }
+
+    .menu__lista{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;/*Se ubican arriba, al inicio del flex container*/
+        padding-top: 15px;
+        gap: 33px;
+    }
+
+    /*Sección videos*/
+    .videos__container{
+        display: flex;
+    }
+
+    /*Footer*/
+    .rodapie__container{
+        justify-content: space-between;
+    }
+}
+/*Presentación de escritorio*/
+@media(min-width:1240px){
+    /*Menu*/
+    .menu__container{
+        width: 239px;
+        overflow: scroll;
+    }
+
+    .menu__lista:nth-child(2),
+    .menu__lista:nth-child(3),
+    .menu__lista:nth-child(4){
+        display: flex;/*Volvemos a hacer visibles las otras listas*/
+    }
+
+    .menu__lista{
+        height: auto;/*De lo contrario no hay espacio para que se vean las otras listas*/
+        padding: 20px 17px 20px 15px;
+        gap: 15px;
+    }
+
+    .menu__lista:nth-child(3){
+        flex-direction: column-reverse;/*Revierte el orden de los elementos en la dirección vertical*/
+    }
+
+    .menu__items{
+        flex-direction: row;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .videojuegos{
+        order: 3;
+    }
+
+    .peliculas{
+        order: 2;
+    }
+
+    .premium{
+        order: 1;
+    }
+}
